@@ -1,3 +1,4 @@
+from asyncio.proactor_events import _ProactorBasePipeTransport
 import os
 
 from flask import Flask, jsonify, request
