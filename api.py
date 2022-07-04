@@ -1,4 +1,5 @@
 from asyncio.proactor_events import _ProactorBasePipeTransport
+import json
 import os
 
 from flask import Flask, jsonify, request
@@ -63,7 +64,9 @@ def home():
 
 @app.route('/api', methods = ['GET'])
 def api_main():
-    return jsonify('Hello, World!'), 200
+    with open('main.json', 'r', encoding='utf-8') as json_file:
+        json_data = json.load(json_file)
+    return jsonify(json_data), 200
 
 @app.route('/api/students', methods=['GET'])
 def get_all_students():
@@ -92,6 +95,59 @@ def add_student():
     serializer = StudentSchema()
     data = serializer.dump(new_student)
     return jsonify(data), 201
+
+@app.route('/api/students/modify/<int:id>', methods=['PATCH'])              # adding modify endpoint
+def modify_stud_data(id):
+    ch_data = Student.get_by_id(id)
+    req_data = request.get_json()
+    if req_data.get('name'):
+        ch_data.name = req_data.get('name')
+    if req_data.get('email'):
+        ch_data.email = req_data.get('email')
+    if req_data.get('age'):
+        ch_data.age = req_data.get('age')
+    if req_data.get('cellphone'):
+        ch_data.cellphone = req_data.get('cellphone') 
+    ch_data.save()
+    serializer = StudentSchema()
+    changed = serializer.dump(ch_data)
+    return jsonify(changed), 200
+
+@app.route('/api/students/change/<int:id>', methods=['PUT'])                # adding change endpoint
+def change_stud_data(id):
+    ch_data = Student.get_by_id(id)
+    req_data = request.get_json()
+    new_data = Student(
+        name = req_data.get('name'),
+        email = req_data.get('email'),
+        age = req_data.get('age'),
+        cellphone = req_data.get('cellphone')
+    )
+    ch_data.name = new_data.name
+    ch_data.email = new_data.email
+    ch_data.age = new_data.age
+    ch_data.cellphone = new_data.cellphone
+
+    ch_data.save()
+    serializer = StudentSchema()
+    changed = serializer.dump(ch_data)
+    return jsonify(changed), 201
+
+@app.route('/api/deleteStudent/<int:id>', methods=['DELETE'])               # adding delete endpoint
+def del_student(id):
+    ch_data = Student.get_by_id(id)
+    ch_data.delete()
+    serializer = StudentSchema()
+    changed = serializer.dump(ch_data)
+    return jsonify(changed), 201
+
+@app.route('/api/heath-check/ok', methods=['GET'])                          # checking health - Ok status
+def healthcheck_ok():
+    return jsonify('Status: OK'), 200
+
+@app.route('/api/heath-check/bad', methods=['GET'])                         # checking health - Error status
+def healthcheck_bad():
+    return jsonify('Status: Error'), 500
 
 if __name__ == '__main__':
     if not database_exists(engine.url):
