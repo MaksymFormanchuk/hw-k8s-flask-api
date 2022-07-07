@@ -1,0 +1,70 @@
+{
+    "General data": [
+      
+      {
+        "endpoint": "/",
+        "output": "Hello from students API!",
+        "purpose": "To greet user when",
+        "method": "GET",
+        "status code": 200
+      },
+      {
+        "endpoint": "/api",
+        "output": "descrition of all endpoints",
+        "purpose": "Using this or user to get acquitanted with api's endpoints",
+        "method": "GET",
+        "status code": 200
+      },
+      {
+        "endpoint": "/api/students",
+        "output": "data of all students present in DB",
+        "purpose": "Using this endpoint user can see the full list of students in the DB",
+        "method": "GET",
+        "status code": 200
+      },
+      {
+        "endpoint": "/api/students/get/<int:id>",
+        "output":"data of studens wtth particular id",
+        "purpose": "Using this endpoint user can find information about particular student",
+        "method": "GET",
+        "status code": 200
+      },
+      {
+        "endpoint": "/api/students/add",
+        "purpose": "Using this endpoint user can add a new student to DB",
+        "method": "POST",
+        "status code": 201
+      },
+      {
+        "endpoint": "/api/students/modify/<int:id>",
+        "purpose": "Using this endpoint user can change praticular fields of information about a student in DB",
+        "method": "PATCH",
+        "status code": 201
+      },
+      {
+        "endpoint": "/api/students/change/<int:id>",
+        "purpose": "Using this endpoint user can change only all fields of information about a student in DB",
+        "method": "PUT",
+        "status code": 201
+      },
+      
+      {
+        "endpoint": "/api/students/delete/<int:id>",
+        "purpose": "Using this endpoint user can delete student from DB",        
+        "method": "DELETE",
+        "status code": 201
+      },
+      {
+        "endpoint": "/api/health-check/ok",
+        "purpose": "Using this endpoint you may learn if health check is ok",
+        "method": "GET",
+        "status code": 200
+      },
+      {
+        "endpoint": "/api/health-check/bad",
+        "purpose": "Using this endpoint you may learn if health check is error",
+        "method": "GET",
+        "status code": 500
+      }
+    ]
+  }
