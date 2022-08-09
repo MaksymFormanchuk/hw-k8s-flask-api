@@ -77,7 +77,8 @@ jobs:
               # login docker
               sudo docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_TOKEN
               
-              sudo docker-compose down
+              sudo docker-compose stop
+              sudo docker-compose rm
               
               # Create docker-compose
               echo \
