@@ -122,8 +122,10 @@ jobs:
                     start_period: 30s
               
               volumes:
-                mysql_data:" > docker-compose.yml
+                mysql_data:" > ~/application/docker-compose.yml
               
+              cd ~/application
+
               sudo docker-compose up -d
 
   hostcheck:
