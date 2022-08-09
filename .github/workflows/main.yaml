@@ -21,10 +21,12 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.8.10'
 
       - name: flake8 Lint
         uses: py-actions/flake8@v2
+        with:
+          ignore: "E303,W292,E265,E302,E231,W293,E251,E501,F401,W291"
 
   build_and_push:
     runs-on: ubuntu-latest
