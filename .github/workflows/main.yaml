@@ -126,11 +126,11 @@ jobs:
               
               cd ~/application
 
-              sudo docker-compose up -d
+              sudo docker-compose up -d 
 
   hostcheck:
     runs-on: ubuntu-latest
-    name: Host Check
+    name: Host check
     needs: deploy
     strategy:
       matrix:
