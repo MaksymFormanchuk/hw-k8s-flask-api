@@ -93,10 +93,10 @@ jobs:
                   ports:
                     - "5000:5000"
                   environment:
-                    - DB_USERNAME=${DB_USERNAME}
-                    - DB_PASSWORD=${DB_PASSWORD}
-                    - DB_HOSTNAME=${DB_HOSTNAME}:3306
-                    - DB_NAME=${DB_NAME}
+                    - DB_USERNAME=devops
+                    - DB_PASSWORD=devops12
+                    - DB_HOSTNAME=db:3306
+                    - DB_NAME=student
                   depends_on:
                     db:
                       condition: service_healthy
@@ -110,10 +110,10 @@ jobs:
                     - '3306:3306'
                   restart: always
                   environment:
-                    MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-                    MYSQL_DATABASE: ${DB_NAME}
-                    MYSQL_USER: ${DB_USERNAME}
-                    MYSQL_PASSWORD: ${DB_PASSWORD}
+                    MYSQL_ROOT_PASSWORD: devops12
+                    MYSQL_DATABASE: student
+                    MYSQL_USER: devops
+                    MYSQL_PASSWORD: devops12
                   healthcheck:
                     test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
                     interval: 5s
