@@ -141,4 +141,4 @@ jobs:
     steps:
       - name: Check host health
         run: 
-          curl -s -I ${{ matrix.HOST }}:${{ matrix.PORT }}/api/health-check/ok -X GET      
+          curl ${{ matrix.HOST }}:${{ matrix.PORT }}/api     
