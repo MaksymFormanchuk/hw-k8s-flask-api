@@ -73,7 +73,7 @@ jobs:
             port: 22
             script: |
               # login docker
-              sudo docker login -u $DOCKER_USER -p $DOCKERHUB_TOKEN
+              sudo docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_TOKEN
               
               sudo docker-compose down
               
