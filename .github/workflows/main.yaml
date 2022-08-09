@@ -139,6 +139,6 @@ jobs:
         PORT: [5000]
 
     steps:
-      - name: Check host health
+      - name: Check host 
         run: 
           curl ${{ matrix.HOST }}:${{ matrix.PORT }}/api     
