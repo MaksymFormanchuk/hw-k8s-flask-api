@@ -5,8 +5,8 @@ metadata:
   name: mysql-secret
   namespace: flask-app
 data:
-  mysql-password: ZGV2b3BzMTI=
-  mysql-root-password: "ZGV2b3BzMTI="
+  mysql-password: password
+  mysql-root-password: "password"
 ---
 apiVersion: v1
 kind: ConfigMap
