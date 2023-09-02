@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: flask-app
-          image: andremart/flaskapp:9ce21d9
+          image: imagerepo/imagename
           imagePullPolicy: Always
           command: ["python3"]
           args: ["-m", "flask", "run", "-h", "0.0.0.0"]
